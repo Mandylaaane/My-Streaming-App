@@ -1,6 +1,7 @@
 const icons = {
   crossIcon: require("./cross.png"),
   homeIcon: require("./home.png"),
+  playIcon: require("./play.png"),
   profileIcon: require("./profile.png"),
   searchIcon: require("./search.png"),
   watchlistIcon: require("./watchlist.png"),

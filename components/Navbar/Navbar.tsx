@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
 import { colors } from "../../themes/colors";
+import { typography } from "../../themes/typography";
 import icons from "../../assets/icons/icons";
 
 export default function Navbar() {
@@ -37,12 +38,8 @@ const styles = StyleSheet.create({
   icon: {
     width: 28,
     height: 28,
+    marginBottom: 3,
     resizeMode: "contain",
   },
-  text: {
-    color: "#FFFFFF",
-    fontSize: 12,
-    fontWeight: "bold",
-    marginTop: 6,
-  },
+  text: typography.navBarText,
 });
