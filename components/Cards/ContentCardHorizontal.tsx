@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";
 import { colors } from "../../themes/colors";
 
-type ContentCardSearchProps = {
+type ContentCardHorizontalProps = {
   title: string;
   onPress?: () => void;
 };
 
-export default function ContentCardSearch({
+export default function ContentCardHorizontal({
   title,
   onPress,
-}: ContentCardSearchProps) {
+}: ContentCardHorizontalProps) {
   return (
     <TouchableOpacity style={styles.contentCard} onPress={onPress}>
       <Text style={styles.contentCardTitle}>{title}</Text>

@@ -8,7 +8,7 @@ export const typography = {
   },
   mediumTitle: {
     fontFamily: "Alata",
-    fontSize: 10,
+    fontSize: 16,
     fontWeight: "600" as const,
     textTransform: "none" as const,
     color: "#FFFFFF",
