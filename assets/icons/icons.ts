@@ -5,5 +5,6 @@ const icons = {
   profileIcon: require("./profile.png"),
   searchIcon: require("./search.png"),
   watchlistIcon: require("./watchlist.png"),
+  logoIcon: require("./logo.png"),
 };
 export default icons;

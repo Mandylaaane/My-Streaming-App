@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { colors } from "../../themes/colors";
-import icons from "../../assets/icons/icons";
 
 type SpecialButtonProps = {
   title: string;
+  style: {};
 };
 
 export default function SpecialButton({ title }: SpecialButtonProps) {

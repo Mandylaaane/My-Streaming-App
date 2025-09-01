@@ -5,6 +5,7 @@ import icons from "../../assets/icons/icons";
 
 type ButtonProps = {
   title: string;
+  style: {};
 };
 
 export default function Button({ title }: ButtonProps) {

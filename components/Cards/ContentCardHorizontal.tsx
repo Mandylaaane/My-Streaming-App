@@ -18,7 +18,7 @@ export default function ContentCardHorizontal({
   );
 }
 
-const CARD_WIDTH = 150; // adjust to your design
+const CARD_WIDTH = 160; // adjust to your design
 const CARD_HEIGHT = 100;
 
 const styles = StyleSheet.create({
