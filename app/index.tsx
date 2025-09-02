@@ -3,14 +3,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { colors } from "../themes/colors";
-import ContentDetailsScreen from "../screens/ContentDetails/ContentDetailsScreen";
+import ContentEpisodeScreen from "../screens/ContentDetails/ContentEpisodeScreen";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ContentDetailsScreen />
+      <ContentEpisodeScreen />
     </SafeAreaView>
   );
 }
