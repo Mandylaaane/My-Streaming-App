@@ -8,7 +8,6 @@ import {
   FlatList,
 } from "react-native";
 import { colors } from "../../themes/colors";
-import { typography } from "../../themes/typography";
 import ContentCardHorizontal from "../../components/Cards/ContentCardHorizontal";
 
 const TABS = ["Details", "Episodes", "Watchlist"];
@@ -21,7 +20,7 @@ export default function ContentEpisodeScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.contentContainer}>
-        <View style={styles.tabsContainer}>
+        {/* <View style={styles.tabsContainer}>
           {TABS.map((tab) => (
             <TouchableOpacity key={tab} onPress={() => setActiveTab(tab)}>
               <Text
@@ -34,7 +33,7 @@ export default function ContentEpisodeScreen() {
               </Text>
             </TouchableOpacity>
           ))}
-        </View>
+        </View> */}
         <View style={styles.latestEpContainer}>
           <View>
             <Text style={styles.cardTitle}>Latest episode</Text>
@@ -67,9 +66,9 @@ const styles = StyleSheet.create({
     minHeight: "100%",
   },
   contentContainer: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 2,
     paddingBottom: 24,
-    paddingTop: 80,
+    paddingTop: 20,
   },
   tabsContainer: {
     flexDirection: "row",

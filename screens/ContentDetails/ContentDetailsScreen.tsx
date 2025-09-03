@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { colors } from "../../themes/colors";
+import ContentEpisodeScreen from "./ContentEpisodeScreen";
+import ContentWatchListScreen from "./ContentWatchListScreen";
 
 const TABS = ["Details", "Episodes", "Watchlist"];
 
@@ -22,7 +24,6 @@ export default function ContentDetailsScreen() {
         resizeMode="cover"
       ></Image>
       <View style={styles.contentContainer}>
-        {/* Tabs */}
         <View style={styles.tabsContainer}>
           {TABS.map((tab) => (
             <TouchableOpacity key={tab} onPress={() => setActiveTab(tab)}>
@@ -37,8 +38,10 @@ export default function ContentDetailsScreen() {
             </TouchableOpacity>
           ))}
         </View>
-
-        {/* Description */}
+        <View>
+          {activeTab === "Episodes" && <ContentEpisodeScreen />}
+          {activeTab === "Watchlist" && <ContentWatchListScreen />}
+        </View>
         <View style={styles.descriptContent}>
           <Text style={styles.description}>
             Elsbeth Tascioni, the astute but unconventional attorney, works with
@@ -47,7 +50,6 @@ export default function ContentDetailsScreen() {
             featured in "The Good Wife" and "The Good Fight."
           </Text>
         </View>
-        {/* Details */}
         <View style={styles.detailsContainer}>
           <View style={styles.detailRow}>
             <Text style={styles.detailLabel}>Genre</Text>
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
   },
   bannerImg: {
     width: "100%",
-    height: 280,
+    height: 260,
     justifyContent: "center",
   },
   contentContainer: {

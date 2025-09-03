@@ -8,7 +8,6 @@ import {
   FlatList,
 } from "react-native";
 import { colors } from "../../themes/colors";
-import { typography } from "../../themes/typography";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
 
 const TABS = ["Details", "Episodes", "Watchlist"];
@@ -31,7 +30,7 @@ export default function ContentWatchListScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.contentContainer}>
-        <View style={styles.tabsContainer}>
+        {/* <View style={styles.tabsContainer}>
           {TABS.map((tab) => (
             <TouchableOpacity key={tab} onPress={() => setActiveTab(tab)}>
               <Text
@@ -44,6 +43,11 @@ export default function ContentWatchListScreen() {
               </Text>
             </TouchableOpacity>
           ))}
+        </View> */}
+        <View style={styles.textContainer}>
+          <Text style={styles.watchListTitle}>
+            Your saved content, for your next watch.
+          </Text>
         </View>
         <View>
           <FlatList
@@ -67,9 +71,9 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flexDirection: "column",
-    paddingHorizontal: 16,
+    paddingHorizontal: 2,
     paddingBottom: 24,
-    paddingTop: 80,
+    paddingTop: 20,
   },
   tabsContainer: {
     flexDirection: "row",
@@ -88,8 +92,16 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: "#dd7e25",
   },
+  textContainer: {
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  watchListTitle: {
+    color: colors.secondaryTextColor,
+    fontSize: 16,
+  },
   watchListCards: {
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 30,
   },
 });
