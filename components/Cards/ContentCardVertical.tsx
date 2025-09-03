@@ -18,7 +18,7 @@ export default function ContentCardVertical({
   );
 }
 
-const CARD_WIDTH = 100; // adjust to your design
+const CARD_WIDTH = 100;
 const CARD_HEIGHT = 150;
 
 const styles = StyleSheet.create({
@@ -27,9 +27,7 @@ const styles = StyleSheet.create({
     height: CARD_HEIGHT,
     backgroundColor: colors.contentCard,
     borderRadius: 12,
-    margin: 8,
-    justifyContent: "center",
-    paddingLeft: 12,
+    margin: 6,
   },
   contentCardTitle: {
     color: colors.primaryTextColor,

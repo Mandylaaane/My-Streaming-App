@@ -46,14 +46,14 @@ export default function ContentEpisodeScreen() {
             <Text style={styles.dateInfo}>14 August 2025</Text>
           </View>
         </View>
+
         <Text style={styles.cardTitle}>Season 1</Text>
         <FlatList
-          style={styles.seasonCard}
           data={seasonCardData}
           keyExtractor={(item) => item.id}
           numColumns={1}
           renderItem={({ item }) => <ContentCardHorizontal title="" />}
-          contentContainerStyle={{ paddingHorizontal: 16 }}
+          contentContainerStyle={styles.seasonCards}
         />
       </View>
     </SafeAreaView>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     minHeight: "100%",
   },
   contentContainer: {
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
     paddingBottom: 24,
     paddingTop: 80,
   },
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     fontWeight: "600" as const,
     textTransform: "none" as const,
     color: "#FFFFFF",
-    marginLeft: 10,
+    marginLeft: 8,
   },
   latestEpCard: {},
   episodeInfo: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   dateInfo: {
     color: colors.secondaryTextColor,
   },
-  seasonCard: {
-    flexDirection: "row",
+  seasonCards: {
+    paddingHorizontal: 16,
   },
 });
