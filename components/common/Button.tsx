@@ -23,14 +23,13 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start", // MAKES IT STAY THE SIZE, NOT ADAPTING TO PARENT COMPONENT
     backgroundColor: colors.button,
     borderRadius: 12,
-    paddingHorizontal: 18,
-    paddingVertical: 14,
-    marginVertical: 12,
-    marginHorizontal: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    margin: 8,
   },
   buttonText: {
     color: colors.primaryTextColor,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "500",
   },
 });

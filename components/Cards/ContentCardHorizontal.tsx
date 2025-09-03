@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
   },
   contentCardTitle: {
-    color: colors.primaryTextColor,
+    color: colors.secondaryTextColor,
     fontSize: 16,
   },
 });

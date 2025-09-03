@@ -30,8 +30,10 @@ const styles = StyleSheet.create({
     margin: 6,
   },
   contentCardTitle: {
-    color: colors.primaryTextColor,
+    color: colors.secondaryTextColor,
     fontSize: 16,
+    marginTop: 120,
+    marginLeft: 10,
   },
 });
 

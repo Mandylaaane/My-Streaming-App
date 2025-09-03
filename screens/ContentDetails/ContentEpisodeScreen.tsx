@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     marginLeft: 8,
   },
-  latestEpCard: {},
   episodeInfo: {
     color: colors.specialTextColor,
     fontWeight: "600",

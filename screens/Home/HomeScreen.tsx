@@ -8,7 +8,6 @@ import {
   ScrollView,
   FlatList,
   ImageBackground,
-  Dimensions,
   TouchableOpacity,
 } from "react-native";
 import { colors } from "../../themes/colors";
@@ -17,12 +16,7 @@ import Button from "../../components/Common/Button";
 import SpecialButton from "../../components/Common/SpecialButton";
 import Navbar from "../../components/Navbar/Navbar";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
-import { typography } from "../../themes/typography";
 import { useNavigation } from "@react-navigation/native";
-
-const screenHeight = Dimensions.get("window").height;
-
-const contentCardData = [{ id: "1" }, { id: "2" }, { id: "3" }];
 
 const browseCardData = [
   { id: "1" },
@@ -31,9 +25,6 @@ const browseCardData = [
   { id: "4" },
   { id: "5" },
   { id: "6" },
-  { id: "7" },
-  { id: "8" },
-  { id: "9" },
 ];
 
 // FIX navbar being sticky.
@@ -60,10 +51,12 @@ export default function HomeScreen() {
               The odd but very intelligent lawyer solves crimes.
             </Text>
             <View style={styles.btnsContainer}>
-              <SpecialButton
-                title="WATCH NOW"
-                style={styles.watchNowBtn}
-              ></SpecialButton>
+              <View>
+                <SpecialButton
+                  title="WATCH NOW"
+                  style={styles.watchNowBtn}
+                ></SpecialButton>
+              </View>
               <View style={styles.blueBtnsContainer}>
                 <Button title="Read more" style={styles.blueBtn}></Button>
                 <Button
@@ -74,23 +67,44 @@ export default function HomeScreen() {
             </View>
           </View>
         </ImageBackground>
-        <Text style={typography.mediumTitle}>Trending now</Text>
-        <FlatList
-          style={styles.trendCards}
-          data={contentCardData}
-          keyExtractor={(item) => item.id}
-          numColumns={3}
-          renderItem={({ item }) => <ContentCardVertical title="" />}
-          contentContainerStyle={{ paddingHorizontal: 16 }}
-        />
-        {/* <FlatList
-          style={styles.browseCards}
-          data={browseCardData}
-          keyExtractor={(item) => item.id}
-          numColumns={3}
-          renderItem={({ item }) => <ContentCardVertical />}
-          contentContainerStyle={{ paddingHorizontal: 16 }}
-        /> */}
+
+        <View style={styles.browseRow}>
+          <View>
+            <Text style={styles.cardTitle}>Trending now</Text>
+          </View>
+          <FlatList
+            data={browseCardData}
+            keyExtractor={(item) => item.id}
+            numColumns={3}
+            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+          />
+        </View>
+        <View style={styles.browseRow}>
+          <View>
+            <Text style={styles.cardTitle}>New</Text>
+          </View>
+          <FlatList
+            data={browseCardData}
+            keyExtractor={(item) => item.id}
+            numColumns={3}
+            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+          />
+        </View>
+        <View style={styles.browseRow}>
+          <View>
+            <Text style={styles.cardTitle}>Coming soon</Text>
+          </View>
+          <FlatList
+            data={browseCardData}
+            keyExtractor={(item) => item.id}
+            numColumns={3}
+            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+          />
+        </View>
+
         <Navbar></Navbar>
       </ScrollView>
     </SafeAreaView>
@@ -123,8 +137,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 200,
-    marginBottom: 12,
+    marginTop: 240,
+    marginBottom: 5,
   },
   elsbethTitle: {
     color: "#fff",
@@ -140,9 +154,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   btnsContainer: {
-    justifyContent: "center", // Vertical centering inside this container
-    alignItems: "center", // Horizontal centering
-    marginVertical: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
   watchNowBtn: {
     alignSelf: "center",
@@ -156,7 +169,13 @@ const styles = StyleSheet.create({
   blueBtn: {
     marginHorizontal: 5,
   },
-
-  trendCards: {},
-  browseCards: {},
+  browseRow: {
+    alignItems: "center",
+  },
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    textTransform: "none",
+    color: "#FFFFFF",
+  },
 });
