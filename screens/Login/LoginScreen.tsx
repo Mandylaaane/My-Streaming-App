@@ -1,12 +1,17 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Text, Image } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ScrollView,
+} from "react-native";
 import { colors } from "../../themes/colors";
 import icons from "../../assets/icons/icons";
 import Button from "../../components/Common/Button";
 import SpecialButton from "../../components/Common/SpecialButton";
 import Navbar from "../../components/Navbar/Navbar";
-import { useNavigation } from "@react-navigation/native";
-import { ROUTES } from "../../navigation/routes";
 
 export default function LoginScreen() {
   return (
@@ -23,12 +28,29 @@ export default function LoginScreen() {
           </Text>
         </View>
         <View style={styles.btnsContainer}>
-          <SpecialButton title="LOG IN" style={styles.loginBtn}></SpecialButton>
-          <Button title="Create account" style={styles.blueBtn}></Button>
-          <Button title="Support" style={styles.blueBtn}></Button>
+          <View>
+            <SpecialButton
+              title="LOG IN"
+              style={styles.loginBtn}
+            ></SpecialButton>
+          </View>
+          <View>
+            <Button title="Create account" style={styles.blueBtn}></Button>
+          </View>
+          <View>
+            <Button title="Support" style={styles.blueBtn}></Button>
+          </View>
         </View>
       </View>
-      <Navbar></Navbar>
+      <Navbar
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 10, // make sure navbar stays above content
+        }}
+      />
     </SafeAreaView>
   );
 }
@@ -43,14 +65,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 12,
   },
   iconContainer: {
     width: "100%",
     paddingTop: 5,
     paddingRight: 5,
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 30,
   },
   icon: {
     width: 120,
@@ -76,11 +97,7 @@ const styles = StyleSheet.create({
   btnsContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 20,
   },
   loginBtn: {},
   blueBtn: {},
-  navbarContainer: {
-    position: "sticky",
-  },
 });

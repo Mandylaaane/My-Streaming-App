@@ -12,6 +12,9 @@ import { colors } from "../../themes/colors";
 import ContentEpisodeScreen from "./ContentEpisodeScreen";
 import ContentWatchListScreen from "./ContentWatchListScreen";
 import icons from "@/assets/icons/icons";
+import { useRouter } from "expo-router";
+
+const router = useRouter();
 
 const TABS = ["Details", "Episodes", "Watchlist"];
 
@@ -26,7 +29,9 @@ export default function ContentDetailsScreen() {
         resizeMode="cover"
       >
         <View style={styles.iconContainer}>
-          <Image source={icons.crossIcon} style={styles.icon} />
+          <TouchableOpacity onPress={() => router.push("/")}>
+            <Image source={icons.crossIcon} style={styles.icon} />
+          </TouchableOpacity>
         </View>
       </ImageBackground>
 

@@ -109,9 +109,16 @@ export default function HomeScreen() {
             contentContainerStyle={{ paddingHorizontal: 16 }}
           />
         </View>
-
-        <Navbar></Navbar>
       </ScrollView>
+      <Navbar
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 10, // make sure navbar stays above content
+        }}
+      />
     </SafeAreaView>
   );
 }

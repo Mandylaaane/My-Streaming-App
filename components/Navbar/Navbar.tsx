@@ -1,11 +1,22 @@
 import React from "react";
-import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  ViewStyle,
+} from "react-native";
 import { useRouter } from "expo-router";
 import { colors } from "../../themes/colors";
 import { typography } from "../../themes/typography";
 import icons from "../../assets/icons/icons";
 
-export default function Navbar() {
+interface NavbarProps {
+  style?: ViewStyle | ViewStyle[];
+}
+
+export default function Navbar({ style }: NavbarProps) {
   const router = useRouter();
 
   return (
