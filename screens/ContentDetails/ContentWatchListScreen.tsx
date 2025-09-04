@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { colors } from "../../themes/colors";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
+import Navbar from "../../components/Navbar/Navbar";
 
 const TABS = ["Details", "Episodes", "Watchlist"];
 
@@ -59,6 +60,7 @@ export default function ContentWatchListScreen() {
           />
         </View>
       </View>
+      <Navbar></Navbar>
     </SafeAreaView>
   );
 }

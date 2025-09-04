@@ -1,29 +1,26 @@
 // import React from "react";
 // import { createStackNavigator } from "@react-navigation/stack";
-// import { ROUTES } from "./routes";
-
 // import HomeScreen from "../screens/Home/HomeScreen";
-// import LoginScreen from "../screens/Login/LoginScreen";
 // import SearchScreen from "../screens/Search/SearchScreen";
-// import ContentDetailsScreen from "../screens/ContentDetails/ContentDetailsScreen";
-// import WatchListScreen from "../screens/WatchList/WatchListScreen";
+// import LoginScreen from "../screens/Login/LoginScreen";
+// import ContentWatchListScreen from "@/screens/ContentDetails/ContentWatchListScreen";
 
-// const Stack = createStackNavigator();
+// export type RootStackParamList = {
+//   Home: undefined;
+//   Search: undefined;
+//   WatchList: undefined;
+//   Login: undefined;
+// };
+
+// const Stack = createStackNavigator<RootStackParamList>();
 
 // export default function AppNavigator() {
 //   return (
-//     <Stack.Navigator
-//       initialRouteName={ROUTES.HOME}
-//       screenOptions={{ headerShown: false }}
-//     >
-//       <Stack.Screen name={ROUTES.HOME} component={HomeScreen} />
-//       <Stack.Screen name={ROUTES.LOGIN} component={LoginScreen} />
-//       <Stack.Screen name={ROUTES.SEARCH} component={SearchScreen} />
-//       <Stack.Screen
-//         name={ROUTES.CONTENT_DETAILS}
-//         component={ContentDetailsScreen}
-//       />
-//       <Stack.Screen name={ROUTES.WATCHLIST} component={WatchListScreen} />
+//     <Stack.Navigator screenOptions={{ headerShown: false }}>
+//       <Stack.Screen name="Home" component={HomeScreen} />
+//       <Stack.Screen name="Search" component={SearchScreen} />
+//       <Stack.Screen name="WatchList" component={ContentWatchListScreen} />
+//       <Stack.Screen name="Login" component={LoginScreen} />
 //     </Stack.Navigator>
 //   );
 // }

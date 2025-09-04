@@ -1,17 +1,22 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { colors } from "../../themes/colors";
 
 type SpecialButtonProps = {
   title: string;
-  style: {};
+  style?: object;
+  onPress?: () => void;
 };
 
-export default function SpecialButton({ title }: SpecialButtonProps) {
+export default function SpecialButton({
+  title,
+  style,
+  onPress,
+}: SpecialButtonProps) {
   return (
-    <View style={styles.buttonContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
       <Text style={styles.buttonText}>{title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

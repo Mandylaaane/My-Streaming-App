@@ -16,7 +16,8 @@ import Button from "../../components/Common/Button";
 import SpecialButton from "../../components/Common/SpecialButton";
 import Navbar from "../../components/Navbar/Navbar";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
-import { useNavigation } from "@react-navigation/native";
+// import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 
 const browseCardData = [
   { id: "1" },
@@ -27,10 +28,9 @@ const browseCardData = [
   { id: "6" },
 ];
 
-// FIX navbar being sticky.
-
 export default function HomeScreen() {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
+  const router = useRouter();
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView>
@@ -40,7 +40,7 @@ export default function HomeScreen() {
           resizeMode="cover"
         >
           <View style={styles.iconContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <TouchableOpacity onPress={() => router.push("/login")}>
               <Image source={icons.profileIcon} style={styles.icon} />
             </TouchableOpacity>
           </View>
@@ -58,10 +58,15 @@ export default function HomeScreen() {
                 ></SpecialButton>
               </View>
               <View style={styles.blueBtnsContainer}>
-                <Button title="Read more" style={styles.blueBtn}></Button>
+                <Button
+                  title="Read more"
+                  style={styles.blueBtn}
+                  onPress={() => router.push("/contentDetails")}
+                ></Button>
                 <Button
                   title="Add to watch list"
                   style={styles.blueBtn}
+                  onPress={() => router.push("/watchList")}
                 ></Button>
               </View>
             </View>
@@ -179,3 +184,5 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
   },
 });
+
+// FIX navbar being sticky.

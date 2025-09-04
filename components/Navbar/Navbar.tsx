@@ -1,28 +1,28 @@
 import React from "react";
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 import { colors } from "../../themes/colors";
 import { typography } from "../../themes/typography";
 import icons from "../../assets/icons/icons";
 
 export default function Navbar() {
-  const navigation = useNavigation();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity onPress={() => router.push("/")}>
         <View style={styles.iconContainer}>
           <Image source={icons.homeIcon} style={styles.icon} />
           <Text style={styles.text}>Home</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Search")}>
+      <TouchableOpacity onPress={() => router.push("/search")}>
         <View style={styles.iconContainer}>
           <Image source={icons.searchIcon} style={styles.icon} />
           <Text style={styles.text}>Search</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("WatchList")}>
+      <TouchableOpacity onPress={() => router.push("/watchList")}>
         <View style={styles.iconContainer}>
           <Image source={icons.watchlistIcon} style={styles.icon} />
           <Text style={styles.text}>Watchlist</Text>
@@ -34,7 +34,7 @@ export default function Navbar() {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row", // Icons arranged horizontally
+    flexDirection: "row",
     backgroundColor: colors.background,
     padding: 10,
     justifyContent: "space-around",
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     position: "sticky",
   },
   iconContainer: {
-    flexDirection: "column", // Icon and text stacked vertically
+    flexDirection: "column",
     alignItems: "center",
   },
   icon: {

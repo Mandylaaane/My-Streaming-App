@@ -5,11 +5,13 @@ import {
   View,
   Text,
   Image,
+  ImageBackground,
   TouchableOpacity,
 } from "react-native";
 import { colors } from "../../themes/colors";
 import ContentEpisodeScreen from "./ContentEpisodeScreen";
 import ContentWatchListScreen from "./ContentWatchListScreen";
+import icons from "@/assets/icons/icons";
 
 const TABS = ["Details", "Episodes", "Watchlist"];
 
@@ -18,11 +20,16 @@ export default function ContentDetailsScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <Image
+      <ImageBackground
         source={require("../../assets/images/contentDetailsElsbeth.png")}
         style={styles.bannerImg}
         resizeMode="cover"
-      ></Image>
+      >
+        <View style={styles.iconContainer}>
+          <Image source={icons.crossIcon} style={styles.icon} />
+        </View>
+      </ImageBackground>
+
       <View style={styles.contentContainer}>
         <View style={styles.tabsContainer}>
           {TABS.map((tab) => (
@@ -77,12 +84,22 @@ const styles = StyleSheet.create({
   safeArea: {
     backgroundColor: colors.background,
     width: "100%",
-    minHeight: "100%",
+    height: "100%",
   },
   bannerImg: {
     width: "100%",
-    height: 260,
-    justifyContent: "center",
+    minHeight: 260,
+  },
+  iconContainer: {
+    width: "100%",
+    paddingTop: 5,
+    paddingRight: 5,
+  },
+  icon: {
+    width: 35,
+    height: 35,
+    margin: 15,
+    resizeMode: "contain",
   },
   contentContainer: {
     paddingHorizontal: 24,

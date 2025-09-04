@@ -1,18 +1,19 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { colors } from "../../themes/colors";
 import icons from "../../assets/icons/icons";
 
 type ButtonProps = {
   title: string;
-  style: {};
+  style?: object;
+  onPress?: () => void;
 };
 
-export default function Button({ title }: ButtonProps) {
+export default function Button({ title, style, onPress }: ButtonProps) {
   return (
-    <View style={styles.buttonContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
       <Text style={styles.buttonText}>{title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
