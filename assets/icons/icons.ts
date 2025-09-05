@@ -6,5 +6,7 @@ const icons = {
   searchIcon: require("./search.png"),
   watchlistIcon: require("./watchlist.png"),
   logoIcon: require("./logo.png"),
+  logoWhite: require("./logoWhite.png"),
+  logoOrange: require("./logoOrange.png"),
 };
 export default icons;

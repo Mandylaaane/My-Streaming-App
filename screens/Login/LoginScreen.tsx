@@ -18,7 +18,7 @@ export default function LoginScreen() {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.loginContent}>
         <View style={styles.iconContainer}>
-          <Image source={icons.logoIcon} style={styles.icon} />
+          <Image source={icons.logoWhite} style={styles.icon} />
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.loginTitle}>Welcome!</Text>
@@ -68,15 +68,13 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     width: "100%",
-    paddingTop: 5,
-    paddingRight: 5,
     alignItems: "center",
-    marginTop: 30,
+    marginTop: 5,
   },
   icon: {
-    width: 120,
+    width: 150,
     height: 120,
-    margin: 15,
+    marginBottom: 50,
   },
   textContainer: {},
   loginTitle: {

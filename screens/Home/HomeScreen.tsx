@@ -16,7 +16,6 @@ import Button from "../../components/Common/Button";
 import SpecialButton from "../../components/Common/SpecialButton";
 import Navbar from "../../components/Navbar/Navbar";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
-// import { useNavigation } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 
 const browseCardData = [
@@ -29,7 +28,6 @@ const browseCardData = [
 ];
 
 export default function HomeScreen() {
-  // const navigation = useNavigation();
   const router = useRouter();
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -40,6 +38,9 @@ export default function HomeScreen() {
           resizeMode="cover"
         >
           <View style={styles.iconContainer}>
+            <View style={styles.logoContainer}>
+              <Image source={icons.logoWhite} style={styles.logoIcon} />
+            </View>
             <TouchableOpacity onPress={() => router.push("/login")}>
               <Image source={icons.profileIcon} style={styles.icon} />
             </TouchableOpacity>
@@ -72,42 +73,49 @@ export default function HomeScreen() {
             </View>
           </View>
         </ImageBackground>
-
-        <View style={styles.browseRow}>
-          <View>
-            <Text style={styles.cardTitle}>Trending now</Text>
+        <View style={styles.browseContainer}>
+          <View style={styles.browseRow}>
+            <View>
+              <Text style={styles.cardTitle}>Trending now</Text>
+            </View>
+            <FlatList
+              horizontal
+              data={browseCardData}
+              keyExtractor={(item) => item.id}
+              numColumns={1}
+              renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+              contentContainerStyle={{ paddingHorizontal: 16 }}
+              showsHorizontalScrollIndicator={false}
+            />
           </View>
-          <FlatList
-            data={browseCardData}
-            keyExtractor={(item) => item.id}
-            numColumns={3}
-            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
-          />
-        </View>
-        <View style={styles.browseRow}>
-          <View>
-            <Text style={styles.cardTitle}>New</Text>
+          <View style={styles.browseRow}>
+            <View>
+              <Text style={styles.cardTitle}>New</Text>
+            </View>
+            <FlatList
+              horizontal
+              data={browseCardData}
+              keyExtractor={(item) => item.id}
+              numColumns={1}
+              renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+              contentContainerStyle={{ paddingHorizontal: 16 }}
+              showsHorizontalScrollIndicator={false}
+            />
           </View>
-          <FlatList
-            data={browseCardData}
-            keyExtractor={(item) => item.id}
-            numColumns={3}
-            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
-          />
-        </View>
-        <View style={styles.browseRow}>
-          <View>
-            <Text style={styles.cardTitle}>Coming soon</Text>
+          <View style={styles.browseRow}>
+            <View>
+              <Text style={styles.cardTitle}>Coming soon</Text>
+            </View>
+            <FlatList
+              horizontal
+              data={browseCardData}
+              keyExtractor={(item) => item.id}
+              numColumns={1}
+              renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+              contentContainerStyle={{ paddingHorizontal: 16 }}
+              showsHorizontalScrollIndicator={false}
+            />
           </View>
-          <FlatList
-            data={browseCardData}
-            keyExtractor={(item) => item.id}
-            numColumns={3}
-            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
-          />
         </View>
       </ScrollView>
       <Navbar
@@ -116,7 +124,7 @@ export default function HomeScreen() {
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: 10, // make sure navbar stays above content
+          zIndex: 10,
         }}
       />
     </SafeAreaView>
@@ -138,6 +146,16 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingRight: 5,
     alignItems: "flex-end",
+  },
+  logoContainer: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+  },
+  logoIcon: {
+    width: 50,
+    height: 50,
+    margin: 15,
+    resizeMode: "contain",
   },
   icon: {
     width: 35,
@@ -168,6 +186,7 @@ const styles = StyleSheet.create({
   btnsContainer: {
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 10,
   },
   watchNowBtn: {
     alignSelf: "center",
@@ -181,8 +200,12 @@ const styles = StyleSheet.create({
   blueBtn: {
     marginHorizontal: 5,
   },
+  browseContainer: {
+    marginTop: 50,
+  },
   browseRow: {
     alignItems: "center",
+    marginTop: 10,
   },
   cardTitle: {
     fontSize: 16,
