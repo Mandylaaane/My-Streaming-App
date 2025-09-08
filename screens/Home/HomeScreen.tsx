@@ -45,10 +45,12 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.bannerContent}>
-          <Text style={styles.elsbethTitle}>Elsbeth</Text>
-          <Text style={styles.elsbethDescription}>
-            The odd but very intelligent lawyer solves crimes.
-          </Text>
+          <View style={styles.bannerTextContainer}>
+            <Text style={styles.elsbethTitle}>Elsbeth</Text>
+            <Text style={styles.elsbethDescription}>
+              The odd but very intelligent lawyer solves crimes.
+            </Text>
+          </View>
           <View style={styles.btnsContainer}>
             <View>
               <SpecialButton
@@ -73,7 +75,7 @@ export default function HomeScreen() {
       </ImageBackground>
       <View style={styles.browseContainer}>
         <View style={styles.browseRow}>
-          <View>
+          <View style={styles.titleRow}>
             <Text style={styles.cardTitle}>Trending now</Text>
           </View>
           <FlatList
@@ -87,7 +89,7 @@ export default function HomeScreen() {
           />
         </View>
         <View style={styles.browseRow}>
-          <View>
+          <View style={styles.titleRow}>
             <Text style={styles.cardTitle}>New</Text>
           </View>
           <FlatList
@@ -101,7 +103,7 @@ export default function HomeScreen() {
           />
         </View>
         <View style={styles.browseRow}>
-          <View>
+          <View style={styles.titleRow}>
             <Text style={styles.cardTitle}>Coming soon</Text>
           </View>
           <FlatList
@@ -121,9 +123,8 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   bannerBackground: {
-    flex: 1,
     width: "100%",
-    minHeight: 500,
+    maxHeight: 530,
     paddingBottom: 5,
   },
   iconContainer: {
@@ -149,11 +150,13 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   bannerContent: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 240,
+    marginTop: 270,
     marginBottom: 5,
+  },
+  bannerTextContainer: {
+    alignItems: "center",
   },
   elsbethTitle: {
     color: "#fff",
@@ -186,11 +189,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   browseContainer: {
-    marginTop: 50,
+    marginTop: 20,
   },
   browseRow: {
     alignItems: "center",
     marginTop: 10,
+  },
+  titleRow: {
+    width: "100%",
+    alignItems: "flex-start",
+    paddingLeft: 20,
   },
   cardTitle: {
     fontSize: 16,
@@ -199,5 +207,3 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
   },
 });
-
-// FIX navbar being sticky.

@@ -32,6 +32,9 @@ export default function ContentDetailsScreen() {
             <Image source={icons.crossIcon} style={styles.icon} />
           </TouchableOpacity>
         </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.elsbethTitle}>Elsbeth</Text>
+        </View>
       </ImageBackground>
 
       <View style={styles.contentContainer}>
@@ -106,6 +109,17 @@ const styles = StyleSheet.create({
     margin: 15,
     resizeMode: "contain",
   },
+  textContainer: {
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: 130,
+  },
+  elsbethTitle: {
+    color: "#fff",
+    fontSize: 32,
+    fontWeight: "bold",
+    marginBottom: 6,
+  },
   contentContainer: {
     paddingHorizontal: 24,
     paddingBottom: 24,
@@ -119,7 +133,7 @@ const styles = StyleSheet.create({
   tabText: {
     color: colors.primaryTextColor,
     fontWeight: "600",
-    fontSize: 16,
+    fontSize: 18,
     paddingBottom: 6,
   },
   activeTabText: {

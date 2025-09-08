@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { colors } from "../../themes/colors";
 import ContentCardHorizontal from "../../components/Cards/ContentCardHorizontal";
+import ContentCardHorizInfo from "../../components/Cards/ContentCardHorizInfo";
 
 const seasonCardData = [{ id: "1" }, { id: "2" }, { id: "3" }, { id: "4" }];
 
@@ -31,7 +32,7 @@ export default function ContentEpisodeScreen() {
         <Text style={styles.cardTitle}>Season 1</Text>
         <ScrollView contentContainerStyle={styles.seasonCards}>
           {seasonCardData.map((item) => (
-            <ContentCardHorizontal key={item.id} title="" />
+            <ContentCardHorizInfo key={item.id} />
           ))}
         </ScrollView>
       </View>
