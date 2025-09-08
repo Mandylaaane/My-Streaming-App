@@ -5,35 +5,17 @@ import {
   View,
   Text,
   TouchableOpacity,
-  FlatList,
+  ScrollView,
 } from "react-native";
 import { colors } from "../../themes/colors";
 import ContentCardHorizontal from "../../components/Cards/ContentCardHorizontal";
 
-const TABS = ["Details", "Episodes", "Watchlist"];
-
 const seasonCardData = [{ id: "1" }, { id: "2" }, { id: "3" }, { id: "4" }];
 
 export default function ContentEpisodeScreen() {
-  const [activeTab, setActiveTab] = useState("Episodes");
-
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <View>
       <View style={styles.contentContainer}>
-        {/* <View style={styles.tabsContainer}>
-          {TABS.map((tab) => (
-            <TouchableOpacity key={tab} onPress={() => setActiveTab(tab)}>
-              <Text
-                style={[
-                  styles.tabText,
-                  activeTab === tab && styles.activeTabText,
-                ]}
-              >
-                {tab}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View> */}
         <View style={styles.latestEpContainer}>
           <View>
             <Text style={styles.cardTitle}>Latest episode</Text>
@@ -47,24 +29,17 @@ export default function ContentEpisodeScreen() {
         </View>
 
         <Text style={styles.cardTitle}>Season 1</Text>
-        <FlatList
-          data={seasonCardData}
-          keyExtractor={(item) => item.id}
-          numColumns={1}
-          renderItem={({ item }) => <ContentCardHorizontal title="" />}
-          contentContainerStyle={styles.seasonCards}
-        />
+        <ScrollView contentContainerStyle={styles.seasonCards}>
+          {seasonCardData.map((item) => (
+            <ContentCardHorizontal key={item.id} title="" />
+          ))}
+        </ScrollView>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    backgroundColor: colors.background,
-    width: "100%",
-    minHeight: "100%",
-  },
   contentContainer: {
     paddingHorizontal: 2,
     paddingBottom: 24,

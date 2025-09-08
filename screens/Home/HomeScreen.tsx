@@ -14,7 +14,6 @@ import { colors } from "../../themes/colors";
 import icons from "../../assets/icons/icons";
 import Button from "../../components/Common/Button";
 import SpecialButton from "../../components/Common/SpecialButton";
-import Navbar from "../../components/Navbar/Navbar";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
 import { useRouter } from "expo-router";
 
@@ -30,111 +29,97 @@ const browseCardData = [
 export default function HomeScreen() {
   const router = useRouter();
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView>
-        <ImageBackground
-          source={require("../../assets/images/homePageElsbeth.png")}
-          style={styles.bannerBackground}
-          resizeMode="cover"
-        >
-          <View style={styles.iconContainer}>
-            <View style={styles.logoContainer}>
-              <Image source={icons.logoWhite} style={styles.logoIcon} />
-            </View>
-            <TouchableOpacity onPress={() => router.push("/login")}>
-              <Image source={icons.profileIcon} style={styles.icon} />
-            </TouchableOpacity>
+    <ScrollView>
+      <ImageBackground
+        source={require("../../assets/images/homePageElsbeth.png")}
+        style={styles.bannerBackground}
+        resizeMode="cover"
+      >
+        <View style={styles.iconContainer}>
+          <View style={styles.logoContainer}>
+            <Image source={icons.logoWhite} style={styles.logoIcon} />
           </View>
+          <TouchableOpacity onPress={() => router.push("/login")}>
+            <Image source={icons.profileIcon} style={styles.profileIcon} />
+          </TouchableOpacity>
+        </View>
 
-          <View style={styles.bannerContent}>
-            <Text style={styles.elsbethTitle}>Elsbeth</Text>
-            <Text style={styles.elsbethDescription}>
-              The odd but very intelligent lawyer solves crimes.
-            </Text>
-            <View style={styles.btnsContainer}>
-              <View>
-                <SpecialButton
-                  title="WATCH NOW"
-                  style={styles.watchNowBtn}
-                ></SpecialButton>
-              </View>
-              <View style={styles.blueBtnsContainer}>
-                <Button
-                  title="Read more"
-                  style={styles.blueBtn}
-                  onPress={() => router.push("/contentDetails")}
-                ></Button>
-                <Button
-                  title="Add to watch list"
-                  style={styles.blueBtn}
-                  onPress={() => router.push("/watchList")}
-                ></Button>
-              </View>
-            </View>
-          </View>
-        </ImageBackground>
-        <View style={styles.browseContainer}>
-          <View style={styles.browseRow}>
+        <View style={styles.bannerContent}>
+          <Text style={styles.elsbethTitle}>Elsbeth</Text>
+          <Text style={styles.elsbethDescription}>
+            The odd but very intelligent lawyer solves crimes.
+          </Text>
+          <View style={styles.btnsContainer}>
             <View>
-              <Text style={styles.cardTitle}>Trending now</Text>
+              <SpecialButton
+                title="WATCH NOW"
+                style={styles.watchNowBtn}
+              ></SpecialButton>
             </View>
-            <FlatList
-              horizontal
-              data={browseCardData}
-              keyExtractor={(item) => item.id}
-              numColumns={1}
-              renderItem={({ item }) => <ContentCardVertical title="(title)" />}
-              contentContainerStyle={{ paddingHorizontal: 16 }}
-              showsHorizontalScrollIndicator={false}
-            />
-          </View>
-          <View style={styles.browseRow}>
-            <View>
-              <Text style={styles.cardTitle}>New</Text>
+            <View style={styles.blueBtnsContainer}>
+              <Button
+                title="Read more"
+                style={styles.blueBtn}
+                onPress={() => router.push("/contentDetails")}
+              ></Button>
+              <Button
+                title="Add to watch list"
+                style={styles.blueBtn}
+                onPress={() => router.push("/watchList")}
+              ></Button>
             </View>
-            <FlatList
-              horizontal
-              data={browseCardData}
-              keyExtractor={(item) => item.id}
-              numColumns={1}
-              renderItem={({ item }) => <ContentCardVertical title="(title)" />}
-              contentContainerStyle={{ paddingHorizontal: 16 }}
-              showsHorizontalScrollIndicator={false}
-            />
-          </View>
-          <View style={styles.browseRow}>
-            <View>
-              <Text style={styles.cardTitle}>Coming soon</Text>
-            </View>
-            <FlatList
-              horizontal
-              data={browseCardData}
-              keyExtractor={(item) => item.id}
-              numColumns={1}
-              renderItem={({ item }) => <ContentCardVertical title="(title)" />}
-              contentContainerStyle={{ paddingHorizontal: 16 }}
-              showsHorizontalScrollIndicator={false}
-            />
           </View>
         </View>
-      </ScrollView>
-      <Navbar
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 10,
-        }}
-      />
-    </SafeAreaView>
+      </ImageBackground>
+      <View style={styles.browseContainer}>
+        <View style={styles.browseRow}>
+          <View>
+            <Text style={styles.cardTitle}>Trending now</Text>
+          </View>
+          <FlatList
+            horizontal
+            data={browseCardData}
+            keyExtractor={(item) => item.id}
+            numColumns={1}
+            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <View style={styles.browseRow}>
+          <View>
+            <Text style={styles.cardTitle}>New</Text>
+          </View>
+          <FlatList
+            horizontal
+            data={browseCardData}
+            keyExtractor={(item) => item.id}
+            numColumns={1}
+            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <View style={styles.browseRow}>
+          <View>
+            <Text style={styles.cardTitle}>Coming soon</Text>
+          </View>
+          <FlatList
+            horizontal
+            data={browseCardData}
+            keyExtractor={(item) => item.id}
+            numColumns={1}
+            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    backgroundColor: colors.background,
-  },
   bannerBackground: {
     flex: 1,
     width: "100%",
@@ -145,19 +130,19 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingTop: 5,
     paddingRight: 5,
-    alignItems: "flex-end",
-  },
-  logoContainer: {
     flexDirection: "row",
     alignItems: "flex-start",
   },
+  logoContainer: {},
   logoIcon: {
     width: 50,
     height: 50,
-    margin: 15,
+    marginTop: 10,
+    marginLeft: 15,
+    marginRight: 255,
     resizeMode: "contain",
   },
-  icon: {
+  profileIcon: {
     width: 35,
     height: 35,
     margin: 15,

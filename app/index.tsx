@@ -1,42 +1,40 @@
 import React from "react";
 import HomeScreen from "../screens/Home/HomeScreen";
-// import { NavigationContainer } from "@react-navigation/native";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default function App() {
   return <HomeScreen></HomeScreen>;
 }
 
-// TRY: later to solve proper navigation
-
 // import React from "react";
-// import { NavigationContainer } from "@react-navigation/native";
-// import AppNavigator from "../navigation/AppNavigator";
+// import { SafeAreaView, StyleSheet, View } from "react-native";
+// import { colors } from "../themes/colors";
+// import HomeScreen from "../screens/Home/HomeScreen";
+// import Navbar from "../components/Navbar/Navbar";
 
 // export default function App() {
 //   return (
-//     <NavigationContainer>
-//       <AppNavigator />
-//     </NavigationContainer>
+//     <SafeAreaView style={styles.safeArea}>
+//       <View style={styles.contentContainer}>
+//         <HomeScreen />
+//       </View>
+//       <Navbar style={styles.navbar} />
+//     </SafeAreaView>
 //   );
 // }
 
-// import HomeScreen from "@/screens/Home/HomeScreen";
-// import SearchScreen from "@/screens/Search/SearchScreen";
-// import ContentWatchListScreen from "@/screens/ContentDetails/ContentWatchListScreen";
-// import LoginScreen from "@/screens/Login/LoginScreen";
-
-// const Stack = createNativeStackNavigator();
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator initialRouteName="Home">
-//         <Stack.Screen name="Home" component={HomeScreen} />
-//         <Stack.Screen name="Search" component={SearchScreen} />
-//         <Stack.Screen name="WatchList" component={ContentWatchListScreen} />
-//         <Stack.Screen name="Login" component={LoginScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
+// const styles = StyleSheet.create({
+//   safeArea: {
+//     flex: 1,
+//     backgroundColor: colors.background,
+//   },
+//   contentContainer: {
+//     flex: 1,
+//   },
+//   navbar: {
+//     position: "absolute",
+//     bottom: 0,
+//     left: 0,
+//     right: 0,
+//     zIndex: 10,
+//   },
+// });

@@ -1,6 +1,6 @@
 import React from "react";
-import ContentWatchListScreen from "../screens/ContentDetails/ContentWatchListScreen";
+import WatchListScreen from "../screens/WatchList/WatchListScreen";
 
-export default function Search() {
-  return <ContentWatchListScreen />;
+export default function WatchList() {
+  return <WatchListScreen />;
 }

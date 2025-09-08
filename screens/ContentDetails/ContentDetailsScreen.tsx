@@ -1,28 +1,27 @@
 import React, { useState } from "react";
 import {
-  SafeAreaView,
   StyleSheet,
   View,
   Text,
   Image,
   ImageBackground,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { colors } from "../../themes/colors";
 import ContentEpisodeScreen from "./ContentEpisodeScreen";
-import ContentWatchListScreen from "./ContentWatchListScreen";
 import icons from "@/assets/icons/icons";
 import { useRouter } from "expo-router";
 
 const router = useRouter();
 
-const TABS = ["Details", "Episodes", "Watchlist"];
+const TABS = ["Details", "Episodes"];
 
 export default function ContentDetailsScreen() {
   const [activeTab, setActiveTab] = useState("Details");
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <ScrollView style={styles.viewContainer}>
       <ImageBackground
         source={require("../../assets/images/contentDetailsElsbeth.png")}
         style={styles.bannerImg}
@@ -50,46 +49,47 @@ export default function ContentDetailsScreen() {
             </TouchableOpacity>
           ))}
         </View>
-        <View>
-          {activeTab === "Episodes" && <ContentEpisodeScreen />}
-          {activeTab === "Watchlist" && <ContentWatchListScreen />}
-        </View>
-        <View style={styles.descriptContent}>
-          <Text style={styles.description}>
-            Elsbeth Tascioni, the astute but unconventional attorney, works with
-            the NYPD to catch New York's most well-heeled murderers utilizing
-            her unique point of view. "Elsbeth" is based on the character
-            featured in "The Good Wife" and "The Good Fight."
-          </Text>
-        </View>
-        <View style={styles.detailsContainer}>
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Genre</Text>
-            <Text style={styles.detailValue}>Series</Text>
-          </View>
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Year</Text>
-            <Text style={styles.detailValue}>2025</Text>
-          </View>
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Country</Text>
-            <Text style={styles.detailValue}>England</Text>
-          </View>
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Seasons</Text>
-            <Text style={styles.detailValue}>1</Text>
-          </View>
-        </View>
+
+        {activeTab === "Episodes" && <ContentEpisodeScreen />}
+
+        {activeTab === "Details" && (
+          <>
+            <View style={styles.descriptContent}>
+              <Text style={styles.description}>
+                Elsbeth Tascioni, the astute but unconventional attorney, works
+                with the NYPD to catch New York's most well-heeled murderers
+                utilizing her unique point of view. "Elsbeth" is based on the
+                character featured in "The Good Wife" and "The Good Fight."
+              </Text>
+            </View>
+            <View style={styles.detailsContainer}>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Genre</Text>
+                <Text style={styles.detailValue}>Series</Text>
+              </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Year</Text>
+                <Text style={styles.detailValue}>2025</Text>
+              </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Country</Text>
+                <Text style={styles.detailValue}>England</Text>
+              </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Seasons</Text>
+                <Text style={styles.detailValue}>1</Text>
+              </View>
+            </View>
+          </>
+        )}
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  viewContainer: {
     backgroundColor: colors.background,
-    width: "100%",
-    height: "100%",
   },
   bannerImg: {
     width: "100%",
@@ -154,5 +154,12 @@ const styles = StyleSheet.create({
   detailValue: {
     color: colors.secondaryTextColor,
     fontSize: 13,
+  },
+  navbar: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
   },
 });

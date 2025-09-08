@@ -1,17 +1,7 @@
 import React, { useState } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, Text, FlatList } from "react-native";
 import { colors } from "../../themes/colors";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
-import Navbar from "../../components/Navbar/Navbar";
-
-const TABS = ["Details", "Episodes", "Watchlist"];
 
 const watchListCardData = [
   { id: "1" },
@@ -25,26 +15,12 @@ const watchListCardData = [
   { id: "9" },
 ];
 
-export default function ContentWatchListScreen() {
+export default function WatchListScreen() {
   const [activeTab, setActiveTab] = useState("Watchlist");
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <View style={styles.viewContainer}>
       <View style={styles.contentContainer}>
-        {/* <View style={styles.tabsContainer}>
-          {TABS.map((tab) => (
-            <TouchableOpacity key={tab} onPress={() => setActiveTab(tab)}>
-              <Text
-                style={[
-                  styles.tabText,
-                  activeTab === tab && styles.activeTabText,
-                ]}
-              >
-                {tab}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View> */}
         <View style={styles.textContainer}>
           <Text style={styles.watchListTitle}>
             Your saved content, for your next watch.
@@ -60,16 +36,13 @@ export default function ContentWatchListScreen() {
           />
         </View>
       </View>
-      <Navbar></Navbar>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  viewContainer: {
     backgroundColor: colors.background,
-    width: "100%",
-    minHeight: "100%",
   },
   contentContainer: {
     flexDirection: "column",
