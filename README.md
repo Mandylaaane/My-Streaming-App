@@ -1,50 +1,41 @@
-# Welcome to your Expo app 👋
+# Streaming App Prototype
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+An interactive React Native streaming app prototype featuring a dynamic home screen with browse and search capabilities, season and episode viewing, and a scalable design system using TypeScript for type safety. This app uses mock data with vertical, horizontal, and episode-specific images.
 
-## Get started
+---
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- Browse multiple content categories: Trending, New, Coming Soon (not made yet)
+- Search and filter content by title (not made yet)
+- Season and episode screens with detailed content cards
+- Responsive UI components for vertical and horizontal content displays
+- Design system with theming (colors, typography) and component-driven spacing
+- Mock data serving as placeholder content with image assets
+- Navigation integrated with Expo Router
+- **Code formatting and consistency ensured via Prettier**
+- **Developer productivity enhanced with VS Code extension AutoRenameTag**
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## Technologies Used
 
-In the output, you'll find options to open the app in a
+- **React Native** with **TypeScript** for cross-platform mobile app development
+- **Expo** managed workflow for easy deployment and testing
+- React Native core components for performant lists and interactions
+- Theming with reusable design tokens (colors, typography)
+- Image assets managed via static `require` calls with type-safe interfaces
+- **Prettier** for consistent, automatic code formatting
+- **AutoRenameTag VS Code extension** for faster JSX/TSX editing
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Getting Started
 
-## Get a fresh project
+### Prerequisites
 
-When you're ready, run:
+- Node.js
+- Expo CLI (`npm install -g expo-cli`)
+- VS Code with **Prettier** and **AutoRenameTag** extensions installed for best development experience
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Installation
