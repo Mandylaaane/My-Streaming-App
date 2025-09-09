@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   bannerImg: {
-    width: "100%",
-    minHeight: 260,
+    width: 400,
+    minHeight: 320,
   },
   iconContainer: {
     width: "100%",
@@ -112,13 +112,13 @@ const styles = StyleSheet.create({
   textContainer: {
     flexDirection: "column",
     alignItems: "center",
-    marginTop: 130,
+    marginTop: 175,
   },
   elsbethTitle: {
     color: "#fff",
-    fontSize: 32,
+    fontSize: 34,
     fontWeight: "bold",
-    marginBottom: 6,
+    marginBottom: 2,
   },
   contentContainer: {
     paddingHorizontal: 24,

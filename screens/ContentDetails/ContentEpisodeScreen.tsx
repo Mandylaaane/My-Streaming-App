@@ -13,7 +13,7 @@ export default function ContentEpisodeScreen() {
     <View>
       <View style={styles.contentContainer}>
         <View style={styles.latestEpContainer}>
-          <View>
+          <View style={styles.latestEpCard}>
             <Text style={styles.cardTitle}>Latest episode</Text>
             <ContentCardHorizontal image={contentData[0].imageEp} />
           </View>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingHorizontal: 2,
     paddingBottom: 24,
-    paddingTop: 20,
+    paddingTop: 10,
   },
   tabsContainer: {
     flexDirection: "row",
@@ -62,7 +62,12 @@ const styles = StyleSheet.create({
   latestEpContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.secondaryTextColor,
+  },
+  latestEpCard: {
+    marginBottom: 24,
   },
   allEpInfo: {},
   cardTitle: {

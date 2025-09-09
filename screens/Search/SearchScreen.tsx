@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,20 +11,22 @@ import { colors } from "../../themes/colors";
 import icons from "../../assets/icons/icons";
 import InputField from "../../components/Common/InputField";
 import ContentCardHorizontal from "../../components/Cards/ContentCardHorizontal";
+import { contentData } from "../../data/contentData";
 import Navbar from "../../components/Navbar/Navbar";
 
-const searchCardData = [
-  { id: "1" },
-  { id: "2" },
-  { id: "3" },
-  { id: "4" },
-  { id: "5" },
-  { id: "6" },
-  { id: "7" },
-  { id: "8" },
-];
-
 export default function SearchScreen() {
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [filteredData, setFilteredData] = React.useState(contentData);
+
+  const handleSearch = (text: string) => {
+    setSearchQuery(text);
+
+    const filtered = contentData.filter((item) =>
+      item.title.toLowerCase().includes(text.toLowerCase())
+    );
+
+    setFilteredData(filtered);
+  };
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.iconContainer}>
@@ -36,15 +38,19 @@ export default function SearchScreen() {
           <InputField
             placeholder="Search"
             style={styles.inputField}
+            value={searchQuery}
+            onChangeText={handleSearch}
           ></InputField>
         </View>
 
         <FlatList
           style={styles.searchCards}
-          data={searchCardData}
+          data={filteredData}
           keyExtractor={(item) => item.id}
           numColumns={2}
-          renderItem={({ item }) => <ContentCardHorizontal title="" />}
+          renderItem={({ item }) => (
+            <ContentCardHorizontal image={item.imageHori} />
+          )}
           contentContainerStyle={{ paddingHorizontal: 16 }}
         />
       </View>
@@ -97,6 +103,7 @@ const styles = StyleSheet.create({
   },
   inputField: {
     width: 340,
+    marginBottom: 20,
   },
   searchCards: {},
   cardContainer: {},

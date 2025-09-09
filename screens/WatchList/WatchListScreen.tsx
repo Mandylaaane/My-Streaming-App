@@ -15,6 +15,8 @@ const watchListCardData = [
   { id: "9" },
 ];
 
+// NOT FINISHED! Keep working
+
 export default function WatchListScreen() {
   const [activeTab, setActiveTab] = useState("Watchlist");
 
