@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  SafeAreaView,
   StyleSheet,
   View,
   Text,
@@ -15,16 +14,8 @@ import icons from "../../assets/icons/icons";
 import Button from "../../components/Common/Button";
 import SpecialButton from "../../components/Common/SpecialButton";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
+import { contentData } from "../../data/contentData";
 import { useRouter } from "expo-router";
-
-const browseCardData = [
-  { id: "1" },
-  { id: "2" },
-  { id: "3" },
-  { id: "4" },
-  { id: "5" },
-  { id: "6" },
-];
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -80,10 +71,12 @@ export default function HomeScreen() {
           </View>
           <FlatList
             horizontal
-            data={browseCardData}
+            data={contentData}
             keyExtractor={(item) => item.id}
             numColumns={1}
-            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+            renderItem={({ item }) => (
+              <ContentCardVertical title={item.title} image={item.imageVert} />
+            )}
             contentContainerStyle={{ paddingHorizontal: 16 }}
             showsHorizontalScrollIndicator={false}
           />
@@ -94,10 +87,12 @@ export default function HomeScreen() {
           </View>
           <FlatList
             horizontal
-            data={browseCardData}
+            data={contentData}
             keyExtractor={(item) => item.id}
             numColumns={1}
-            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+            renderItem={({ item }) => (
+              <ContentCardVertical title={item.title} image={item.imageVert} />
+            )}
             contentContainerStyle={{ paddingHorizontal: 16 }}
             showsHorizontalScrollIndicator={false}
           />
@@ -108,10 +103,12 @@ export default function HomeScreen() {
           </View>
           <FlatList
             horizontal
-            data={browseCardData}
+            data={contentData}
             keyExtractor={(item) => item.id}
             numColumns={1}
-            renderItem={({ item }) => <ContentCardVertical title="(title)" />}
+            renderItem={({ item }) => (
+              <ContentCardVertical title={item.title} image={item.imageVert} />
+            )}
             contentContainerStyle={{ paddingHorizontal: 16 }}
             showsHorizontalScrollIndicator={false}
           />

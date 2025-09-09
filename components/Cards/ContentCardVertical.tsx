@@ -1,18 +1,21 @@
 import React from "react";
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { colors } from "../../themes/colors";
 
 type ContentCardVerticalProps = {
   title: string;
+  image: any;
   onPress?: () => void;
 };
 
 export default function ContentCardVertical({
   title,
+  image,
   onPress,
 }: ContentCardVerticalProps) {
   return (
     <TouchableOpacity style={styles.contentCard} onPress={onPress}>
+      <Image source={image} style={styles.image} />
       <Text style={styles.contentCardTitle}>{title}</Text>
     </TouchableOpacity>
   );
@@ -28,11 +31,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.contentCard,
     borderRadius: 12,
     margin: 6,
+    overflow: "hidden",
   },
   contentCardTitle: {
     color: colors.secondaryTextColor,
     fontSize: 16,
     marginTop: 120,
     marginLeft: 10,
+  },
+  image: {
+    width: CARD_WIDTH,
+    height: CARD_HEIGHT * 0.8, // use ~80% height for image, adjust as needed
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    resizeMode: "cover", // cover scales and crops as needed
   },
 });

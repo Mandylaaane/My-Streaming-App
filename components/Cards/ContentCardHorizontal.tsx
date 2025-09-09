@@ -1,19 +1,25 @@
 import React from "react";
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, Image, View, TouchableOpacity, StyleSheet } from "react-native";
 import { colors } from "../../themes/colors";
 
 type ContentCardHorizontalProps = {
-  title: string;
+  image?: any;
   onPress?: () => void;
 };
 
 export default function ContentCardHorizontal({
-  title,
+  image,
   onPress,
 }: ContentCardHorizontalProps) {
   return (
     <TouchableOpacity style={styles.contentCard} onPress={onPress}>
-      <Text style={styles.contentCardTitle}>{title}</Text>
+      {image ? (
+        <Image source={image} style={styles.image} />
+      ) : (
+        <View style={[styles.image, styles.contentCard]}>
+          <Text style={styles.contentCardTitle}>No content</Text>
+        </View>
+      )}
     </TouchableOpacity>
   );
 }
@@ -29,10 +35,46 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     margin: 8,
     justifyContent: "center",
-    paddingLeft: 12,
+    overflow: "hidden",
   },
   contentCardTitle: {
     color: colors.secondaryTextColor,
     fontSize: 16,
   },
+  image: {
+    width: CARD_WIDTH,
+    height: CARD_HEIGHT, // * 0.8, use ~80% height for image, adjust as needed
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    resizeMode: "cover",
+  },
 });
+
+// import React from "react";
+// import { Text, Image, View, TouchableOpacity, StyleSheet } from "react-native";
+// import { colors } from "../../themes/colors";
+
+// type ContentCardHorizontalProps = {
+//   // title: string; * IMPLEMENT LATER?
+//   image?: any;
+//   onPress?: () => void;
+// };
+
+// export default function ContentCardHorizontal({
+//   // title,
+//   image,
+//   onPress,
+// }: ContentCardHorizontalProps) {
+//   return (
+//     <TouchableOpacity style={styles.contentCard} onPress={onPress}>
+//       {image ? (
+//         <Image source={image} style={styles.image} />
+//       ) : (
+//         <View style={[styles.image, styles.contentCard]}>
+//           <Text style={styles.contentCardTitle}>No content</Text>
+//         </View>
+//       )}
+//       {/* <Text style={styles.contentCardTitle}>{title}</Text> */}
+//     </TouchableOpacity>
+//   );
+// }

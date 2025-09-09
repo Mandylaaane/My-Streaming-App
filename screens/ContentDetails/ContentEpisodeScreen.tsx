@@ -1,16 +1,11 @@
-import React, { useState } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { colors } from "../../themes/colors";
 import ContentCardHorizontal from "../../components/Cards/ContentCardHorizontal";
 import ContentCardHorizInfo from "../../components/Cards/ContentCardHorizInfo";
+import { contentData } from "../../data/contentData";
 
+//SAMPLE until more episodes are added in mock data.
 const seasonCardData = [{ id: "1" }, { id: "2" }, { id: "3" }, { id: "4" }];
 
 export default function ContentEpisodeScreen() {
@@ -20,16 +15,17 @@ export default function ContentEpisodeScreen() {
         <View style={styles.latestEpContainer}>
           <View>
             <Text style={styles.cardTitle}>Latest episode</Text>
-            <ContentCardHorizontal title="" />
+            <ContentCardHorizontal image={contentData[0].imageEp} />
           </View>
           <View style={styles.allEpInfo}>
-            <Text style={styles.episodeInfo}>Episode 3</Text>
+            <Text style={styles.episodeInfo}>Episode 1</Text>
             <Text style={styles.timeInfo}>45 min</Text>
             <Text style={styles.dateInfo}>14 August 2025</Text>
           </View>
         </View>
 
         <Text style={styles.cardTitle}>Season 1</Text>
+        {/* TBD: constructed when mock data exists */}
         <ScrollView contentContainerStyle={styles.seasonCards}>
           {seasonCardData.map((item) => (
             <ContentCardHorizInfo key={item.id} />

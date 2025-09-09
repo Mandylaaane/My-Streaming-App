@@ -35,13 +35,20 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     margin: 8,
     justifyContent: "center",
-    paddingLeft: 12,
+    overflow: "hidden",
   },
   textInfo: {},
   latestEpContainer: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 16,
+  },
+  image: {
+    width: CARD_WIDTH,
+    height: CARD_HEIGHT, // * 0.8, use ~80% height for image, adjust as needed
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    resizeMode: "cover", // cover scales and crops as needed
   },
   episodeInfo: {
     color: colors.specialTextColor,
