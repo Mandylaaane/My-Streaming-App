@@ -4,11 +4,18 @@ import { colors } from "../../themes/colors";
 import ContentCardHorizontal from "../../components/Cards/ContentCardHorizontal";
 import ContentCardHorizInfo from "../../components/Cards/ContentCardHorizInfo";
 import { contentData } from "../../data/contentData";
+import { ContentItem } from "../../data/contentData";
+
+type ContentEpisodeScreenProps = {
+  content: ContentItem;
+};
 
 //SAMPLE until more episodes are added in mock data.
 const seasonCardData = [{ id: "1" }, { id: "2" }, { id: "3" }, { id: "4" }];
 
-export default function ContentEpisodeScreen() {
+export default function ContentEpisodeScreen({
+  content,
+}: ContentEpisodeScreenProps) {
   return (
     <View>
       <View style={styles.contentContainer}>

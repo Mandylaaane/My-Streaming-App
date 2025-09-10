@@ -53,7 +53,12 @@ export default function HomeScreen() {
               <Button
                 title="Read more"
                 style={styles.blueBtn}
-                onPress={() => router.push("/contentDetails")}
+                onPress={() =>
+                  router.push({
+                    pathname: "/contentDetails",
+                    params: { id: "1" },
+                  })
+                }
               ></Button>
               <Button
                 title="Add to watch list"
@@ -75,7 +80,16 @@ export default function HomeScreen() {
             keyExtractor={(item) => item.id}
             numColumns={1}
             renderItem={({ item }) => (
-              <ContentCardVertical title={item.title} image={item.imageVert} />
+              <ContentCardVertical
+                title={item.title}
+                image={item.imageVert}
+                onPress={() =>
+                  router.push({
+                    pathname: "/contentDetails",
+                    params: { id: item.id },
+                  })
+                }
+              />
             )}
             contentContainerStyle={{ paddingHorizontal: 16 }}
             showsHorizontalScrollIndicator={false}
@@ -91,7 +105,16 @@ export default function HomeScreen() {
             keyExtractor={(item) => item.id}
             numColumns={1}
             renderItem={({ item }) => (
-              <ContentCardVertical title={item.title} image={item.imageVert} />
+              <ContentCardVertical
+                title={item.title}
+                image={item.imageVert}
+                onPress={() =>
+                  router.push({
+                    pathname: "/contentDetails",
+                    params: { id: item.id },
+                  })
+                }
+              />
             )}
             contentContainerStyle={{ paddingHorizontal: 16 }}
             showsHorizontalScrollIndicator={false}
@@ -107,7 +130,16 @@ export default function HomeScreen() {
             keyExtractor={(item) => item.id}
             numColumns={1}
             renderItem={({ item }) => (
-              <ContentCardVertical title={item.title} image={item.imageVert} />
+              <ContentCardVertical
+                title={item.title}
+                image={item.imageVert}
+                onPress={() =>
+                  router.push({
+                    pathname: "/contentDetails",
+                    params: { id: item.id },
+                  })
+                }
+              />
             )}
             contentContainerStyle={{ paddingHorizontal: 16 }}
             showsHorizontalScrollIndicator={false}

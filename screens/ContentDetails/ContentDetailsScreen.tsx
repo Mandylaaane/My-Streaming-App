@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   View,
@@ -11,19 +11,32 @@ import {
 import { colors } from "../../themes/colors";
 import ContentEpisodeScreen from "./ContentEpisodeScreen";
 import icons from "@/assets/icons/icons";
-import { useRouter } from "expo-router";
-
-const router = useRouter();
+import Button from "../../components/Common/Button";
+import { useRouter, useLocalSearchParams } from "expo-router";
+import { contentData } from "../../data/contentData";
+import { WatchListContext } from "../WatchList/WatchListContext";
 
 const TABS = ["Details", "Episodes"];
 
 export default function ContentDetailsScreen() {
   const [activeTab, setActiveTab] = useState("Details");
+  const router = useRouter();
+  const { id } = useLocalSearchParams();
+  const content = contentData.find((item) => item.id === id);
+  const { toggleWatchListItem, watchList } = useContext(WatchListContext);
+
+  if (!content) {
+    return (
+      <View style={styles.viewContainer}>
+        <Text style={{ color: "red", margin: 20 }}>Content not found.</Text>
+      </View>
+    );
+  }
 
   return (
     <ScrollView style={styles.viewContainer}>
       <ImageBackground
-        source={require("../../assets/images/contentDetailsElsbeth.png")}
+        source={content.banner}
         style={styles.bannerImg}
         resizeMode="cover"
       >
@@ -32,8 +45,19 @@ export default function ContentDetailsScreen() {
             <Image source={icons.crossIcon} style={styles.icon} />
           </TouchableOpacity>
         </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.elsbethTitle}>Elsbeth</Text>
+        <View style={styles.bannerContent}>
+          <Text style={styles.elsbethTitle}>{content.title}</Text>
+          <View>
+            <Button
+              title={
+                watchList.find((w) => w.id === content.id)
+                  ? "Remove from watch list"
+                  : "Add to watch list"
+              }
+              onPress={() => toggleWatchListItem(content)}
+              style={styles.blueBtn}
+            ></Button>
+          </View>
         </View>
       </ImageBackground>
 
@@ -53,34 +77,35 @@ export default function ContentDetailsScreen() {
           ))}
         </View>
 
-        {activeTab === "Episodes" && <ContentEpisodeScreen />}
+        {activeTab === "Episodes" && <ContentEpisodeScreen content={content} />}
 
         {activeTab === "Details" && (
           <>
             <View style={styles.descriptContent}>
               <Text style={styles.description}>
-                Elsbeth Tascioni, the astute but unconventional attorney, works
-                with the NYPD to catch New York's most well-heeled murderers
-                utilizing her unique point of view. "Elsbeth" is based on the
-                character featured in "The Good Wife" and "The Good Fight."
+                {content.description ?? "No description available."}
               </Text>
             </View>
             <View style={styles.detailsContainer}>
               <View style={styles.detailRow}>
                 <Text style={styles.detailLabel}>Genre</Text>
-                <Text style={styles.detailValue}>Series</Text>
+                <Text style={styles.detailValue}>
+                  {content.genre ?? "Unknown"}
+                </Text>
               </View>
               <View style={styles.detailRow}>
                 <Text style={styles.detailLabel}>Year</Text>
-                <Text style={styles.detailValue}>2025</Text>
+                <Text style={styles.detailValue}>{content.year ?? "N/A"}</Text>
               </View>
               <View style={styles.detailRow}>
                 <Text style={styles.detailLabel}>Country</Text>
-                <Text style={styles.detailValue}>England</Text>
+                <Text style={styles.detailValue}>
+                  {content.country ?? "Unknown"}
+                </Text>
               </View>
               <View style={styles.detailRow}>
                 <Text style={styles.detailLabel}>Seasons</Text>
-                <Text style={styles.detailValue}>1</Text>
+                <Text style={styles.detailValue}>{content.seasons ?? "-"}</Text>
               </View>
             </View>
           </>
@@ -109,17 +134,19 @@ const styles = StyleSheet.create({
     margin: 15,
     resizeMode: "contain",
   },
-  textContainer: {
+  bannerContent: {
     flexDirection: "column",
     alignItems: "center",
-    marginTop: 175,
+    marginTop: 170,
   },
   elsbethTitle: {
     color: "#fff",
     fontSize: 34,
     fontWeight: "bold",
+
     marginBottom: 2,
   },
+  blueBtn: {},
   contentContainer: {
     paddingHorizontal: 24,
     paddingBottom: 24,
@@ -128,7 +155,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     marginBottom: 20,
-    marginTop: 14,
+    marginTop: 20,
   },
   tabText: {
     color: colors.primaryTextColor,
