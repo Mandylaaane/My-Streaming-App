@@ -8,9 +8,9 @@ import {
   ViewStyle,
 } from "react-native";
 import { useRouter } from "expo-router";
-import { colors } from "../../themes/colors";
 import { typography } from "../../themes/typography";
 import icons from "../../assets/icons/icons";
+import { LinearGradient } from "expo-linear-gradient";
 
 interface NavbarProps {
   style?: ViewStyle | ViewStyle[];
@@ -20,7 +20,12 @@ export default function Navbar({ style }: NavbarProps) {
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#111C39", "transparent"]}
+      start={{ x: 0, y: 1 }}
+      end={{ x: 0, y: 0 }}
+      style={styles.container}
+    >
       <TouchableOpacity onPress={() => router.push("/")}>
         <View style={styles.iconContainer}>
           <Image source={icons.homeIcon} style={styles.icon} />
@@ -39,14 +44,13 @@ export default function Navbar({ style }: NavbarProps) {
           <Text style={styles.text}>Watchlist</Text>
         </View>
       </TouchableOpacity>
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: colors.background,
     padding: 10,
     justifyContent: "space-around",
     alignItems: "center",

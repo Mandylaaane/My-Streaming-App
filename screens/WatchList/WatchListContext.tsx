@@ -26,6 +26,10 @@ export const WatchListProvider = ({ children }: { children: ReactNode }) => {
     })();
   }, []);
 
+  useEffect(() => {
+    AsyncStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchList));
+  }, [watchList]);
+
   const toggleWatchListItem = (item: ContentItem) => {
     const exists = watchList.find((w) => w.id === item.id);
     if (exists) {

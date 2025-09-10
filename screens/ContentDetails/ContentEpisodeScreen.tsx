@@ -22,7 +22,7 @@ export default function ContentEpisodeScreen({
         <View style={styles.latestEpContainer}>
           <View style={styles.latestEpCard}>
             <Text style={styles.cardTitle}>Latest episode</Text>
-            <ContentCardHorizontal image={contentData[0].imageEp} />
+            <ContentCardHorizontal />
           </View>
           <View style={styles.allEpInfo}>
             <Text style={styles.episodeInfo}>Episode 1</Text>

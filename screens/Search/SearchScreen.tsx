@@ -6,17 +6,19 @@ import {
   Text,
   FlatList,
   Image,
+  TouchableOpacity,
 } from "react-native";
 import { colors } from "../../themes/colors";
 import icons from "../../assets/icons/icons";
 import InputField from "../../components/Common/InputField";
 import ContentCardHorizontal from "../../components/Cards/ContentCardHorizontal";
 import { contentData } from "../../data/contentData";
-import Navbar from "../../components/Navbar/Navbar";
+import { useRouter } from "expo-router";
 
 export default function SearchScreen() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [filteredData, setFilteredData] = React.useState(contentData);
+  const router = useRouter();
 
   const handleSearch = (text: string) => {
     setSearchQuery(text);
@@ -30,7 +32,10 @@ export default function SearchScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.iconContainer}>
-        <Image source={icons.profileIcon} style={styles.icon} />
+        {/* <Image source={icons.profileIcon} style={styles.icon} /> */}
+        <TouchableOpacity onPress={() => router.push("/login")}>
+          <Image source={icons.profileIcon} style={styles.profileIcon} />
+        </TouchableOpacity>
       </View>
       <View style={styles.discoverContent}>
         <View style={styles.inputContainer}>
@@ -54,15 +59,6 @@ export default function SearchScreen() {
           contentContainerStyle={{ paddingHorizontal: 16 }}
         />
       </View>
-      <Navbar
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 10,
-        }}
-      />
     </SafeAreaView>
   );
 }
@@ -79,7 +75,7 @@ const styles = StyleSheet.create({
     paddingRight: 5,
     alignItems: "flex-end",
   },
-  icon: {
+  profileIcon: {
     width: 35,
     height: 35,
     margin: 15,
