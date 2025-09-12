@@ -21,7 +21,7 @@ export default function Navbar({ style }: NavbarProps) {
 
   return (
     <LinearGradient
-      colors={["#111C39", "transparent"]}
+      colors={["#111C39", "#293E74"]}
       start={{ x: 0, y: 1 }}
       end={{ x: 0, y: 0 }}
       style={styles.container}

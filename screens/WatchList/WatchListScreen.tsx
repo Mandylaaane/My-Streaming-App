@@ -5,22 +5,40 @@ import {
   Text,
   FlatList,
   ListRenderItemInfo,
+  TouchableOpacity,
 } from "react-native";
 import { colors } from "../../themes/colors";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
 import { WatchListContext } from "./WatchListContext";
 import { ContentItem } from "../../data/contentData";
+import { useRouter } from "expo-router";
 
 export default function WatchListScreen() {
   // Use global context for watchlist and toggle function
   const { watchList, toggleWatchListItem } = useContext(WatchListContext);
+  const router = useRouter();
+
+  console.log("WatchListScreen watchList:", watchList);
 
   const renderCard = ({ item }: ListRenderItemInfo<ContentItem>) => (
-    <ContentCardVertical
-      title={item.title}
-      image={item.imageVert}
-      onPress={() => toggleWatchListItem(item)}
-    />
+    <View>
+      <ContentCardVertical
+        title={item.title}
+        image={item.imageVert}
+        onPress={() =>
+          router.push({
+            pathname: "/contentDetails",
+            params: { id: item.id },
+          })
+        }
+      />
+      <TouchableOpacity
+        style={styles.removeButton}
+        onPress={() => toggleWatchListItem(item)}
+      >
+        <Text style={styles.removeButtonText}>Remove?</Text>
+      </TouchableOpacity>
+    </View>
   );
 
   return (
@@ -39,6 +57,7 @@ export default function WatchListScreen() {
             numColumns={3}
             renderItem={renderCard}
             contentContainerStyle={styles.watchListCards}
+            extraData={watchList}
           />
         )}
       </View>
@@ -71,145 +90,19 @@ const styles = StyleSheet.create({
   watchListCards: {
     marginBottom: 24,
   },
+  removeButton: {
+    backgroundColor: colors.specialButton,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    marginTop: 8,
+    borderRadius: 4,
+    alignSelf: "center",
+  },
+  removeButtonText: {
+    color: "white",
+    fontWeight: "600",
+  },
 });
-
-// SECOND VERSION; (may use, trying new)
-
-// import React, { useState, useEffect, } from "react";
-// import { StyleSheet, View, Text, FlatList } from "react-native";
-// import { colors } from "../../themes/colors";
-// import ContentCardVertical from "../../components/Cards/ContentCardVertical";
-// import { contentData, ContentItem } from "../../data/contentData";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
-
-// const WATCHLIST_KEY = "@watchlist";
-
-// export default function WatchListScreen() {
-//   const [watchList, setWatchList] = useState<ContentItem[]>([]);
-
-//   useEffect(() => {
-//     (async () => {
-//       const storedList = await loadWatchList();
-//       setWatchList(storedList);
-//     })();
-//   }, []);
-
-//   useEffect(() => {
-//     saveWatchList(watchList);
-//   }, [watchList]);
-
-//   const saveWatchList = async (list: ContentItem[]) => {
-//     try {
-//       await AsyncStorage.setItem(WATCHLIST_KEY, JSON.stringify(list));
-//     } catch (e) {
-//       console.error("Save error", e);
-//     }
-//   };
-
-// const loadWatchList = async (): Promise<ContentItem[]> => {
-//   try {
-//     const json = await AsyncStorage.getItem(WATCHLIST_KEY);
-//     return json ? JSON.parse(json) : [];
-//   } catch (e) {
-//     console.error("Load error", e);
-//     return [];
-//   }
-// };
-
-// Add or remove item by id
-// const toggleWatchListItem = (item: ContentItem) => {
-//   const exists = watchList.find((w) => w.id === item.id);
-//   if (exists) {
-//     setWatchList(watchList.filter((w) => w.id !== item.id)); // remove
-//   } else {
-//     setWatchList([...watchList, item]); // add
-//   }
-// };
-
-// const renderCard = ({ item }: { item: ContentItem }) => (
-//   <ContentCardVertical
-//     title={item.title}
-//     image={item.imageVert}
-//     onPress={() => toggleWatchListItem(item)}
-//   />
-// );
-
-// return (
-//   <View style={styles.viewContainer}>
-//     <View style={styles.contentContainer}>
-//       <Text style={styles.watchListTitle}>
-//         Your saved content, for your next watch.
-//       </Text>
-
-//       {watchList.length === 0 ? (
-//         <Text style={styles.emptyText}>Your watchlist is empty.</Text>
-//       ) : (
-//         <FlatList
-//           data={watchList}
-//           keyExtractor={(item) => item.id}
-//           numColumns={3}
-//           renderItem={renderCard}
-//           contentContainerStyle={styles.watchListCards}
-//         />
-//       )}
-
-{
-  /* Optionally: show browse list to add items to watchlist */
-}
-{
-  /* <Text style={styles.browseTitle}>Browse content</Text>
-        <FlatList
-          data={contentData}
-          keyExtractor={(item) => item.id}
-          numColumns={3}
-          renderItem={({ item }) => (
-            <ContentCardVertical
-              title={item.title}
-              image={item.imageVert}
-              onPress={() => toggleWatchListItem(item)}
-            />
-          )}
-        /> */
-}
-{
-  /* </View>
-    </View>
-  );
-} */
-}
-
-// const styles = StyleSheet.create({
-//   viewContainer: {
-//     flex: 1,
-//     backgroundColor: colors.background,
-//     paddingTop: 20,
-//   },
-//   contentContainer: {
-//     flex: 1,
-//     paddingHorizontal: 16,
-//   },
-//   watchListTitle: {
-//     fontSize: 18,
-//     fontWeight: "600",
-//     marginBottom: 12,
-//     color: colors.primaryTextColor,
-//   },
-//   emptyText: {
-//     fontStyle: "italic",
-//     color: colors.secondaryTextColor,
-//     textAlign: "center",
-//     marginBottom: 20,
-//   },
-//   watchListCards: {
-//     marginBottom: 24,
-//   },
-//   browseTitle: {
-//     fontSize: 16,
-//     fontWeight: "600",
-//     marginVertical: 12,
-//     color: colors.primaryTextColor,
-//   },
-// });
 
 // FIRST STATIC VERSION _ PROBABLY NOT USING
 

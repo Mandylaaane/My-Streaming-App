@@ -14,7 +14,9 @@ import icons from "@/assets/icons/icons";
 import Button from "../../components/Common/Button";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { contentData } from "../../data/contentData";
+import { ContentItem } from "../../data/contentData";
 import { WatchListContext } from "../WatchList/WatchListContext";
+import Toast from "react-native-toast-message";
 
 const TABS = ["Details", "Episodes"];
 
@@ -24,6 +26,19 @@ export default function ContentDetailsScreen() {
   const { id } = useLocalSearchParams();
   const content = contentData.find((item) => item.id === id);
   const { toggleWatchListItem, watchList } = useContext(WatchListContext);
+
+  const handleToggleWatchList = (item: ContentItem) => {
+    const isInWatchList = watchList.some((w) => w.id === item.id);
+
+    toggleWatchListItem(item);
+
+    Toast.show({
+      type: "success",
+      text1: isInWatchList ? "Removed from watchlist" : "Successfully added",
+      position: "top",
+      visibilityTime: 2000,
+    });
+  };
 
   if (!content) {
     return (
@@ -51,10 +66,10 @@ export default function ContentDetailsScreen() {
             <Button
               title={
                 watchList.find((w) => w.id === content.id)
-                  ? "Remove from watch list"
-                  : "Add to watch list"
+                  ? "Remove from watchlist"
+                  : "Add to watchlist"
               }
-              onPress={() => toggleWatchListItem(content)}
+              onPress={() => handleToggleWatchList(content)}
               style={styles.blueBtn}
             ></Button>
           </View>
@@ -204,3 +219,11 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
 });
+
+// if (!content) {
+//   return (
+//     <View style={styles.viewContainer}>
+//       <Text style={{ color: "red", margin: 20 }}>Content not found.</Text>
+//     </View>
+//   );
+// }

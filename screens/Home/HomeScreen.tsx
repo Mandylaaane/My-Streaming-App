@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   StyleSheet,
   View,
@@ -15,10 +15,25 @@ import Button from "../../components/Common/Button";
 import SpecialButton from "../../components/Common/SpecialButton";
 import ContentCardVertical from "../../components/Cards/ContentCardVertical";
 import { contentData } from "../../data/contentData";
+import { ContentItem } from "../../data/contentData";
 import { useRouter } from "expo-router";
+import { WatchListContext } from "../../screens/WatchList/WatchListContext";
+import Toast from "react-native-toast-message";
 
 export default function HomeScreen() {
   const router = useRouter();
+  const { toggleWatchListItem, watchList } = useContext(WatchListContext);
+
+  const handleAddToWatchList = (item: ContentItem) => {
+    toggleWatchListItem(item);
+    Toast.show({
+      type: "success",
+      text1: "Successfully added",
+      position: "top",
+      visibilityTime: 2000,
+    });
+  };
+
   return (
     <ScrollView>
       <ImageBackground
@@ -61,9 +76,11 @@ export default function HomeScreen() {
                 }
               ></Button>
               <Button
-                title="Add to watch list"
+                title="Add to watchlist"
                 style={styles.blueBtn}
-                onPress={() => router.push("/watchList")}
+                onPress={() =>
+                  handleAddToWatchList(contentData.find((c) => c.id === "1")!)
+                }
               ></Button>
             </View>
           </View>

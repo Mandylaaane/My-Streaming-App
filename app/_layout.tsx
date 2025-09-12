@@ -3,14 +3,20 @@ import { SafeAreaView, StyleSheet, View } from "react-native";
 import Navbar from "../components/Navbar/Navbar";
 import { colors } from "../themes/colors";
 import { Slot } from "expo-router";
+import { WatchListProvider } from "../screens/WatchList/WatchListContext";
+import Toast from "react-native-toast-message";
 
 export default function RootLayout() {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.contentContainer}>
-        {/* Slot renders the nested screen routes */}
-        <Slot />
-      </View>
+      <WatchListProvider>
+        <View style={styles.contentContainer}>
+          {/* Slot renders the nested screen routes */}
+          <Slot />
+        </View>
+        {/* Toast renders globally */}
+        <Toast />
+      </WatchListProvider>
       <Navbar style={styles.navbar} />
     </SafeAreaView>
   );
