@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   bannerContent: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 270,
+    marginTop: 280,
     marginBottom: 5,
   },
   bannerTextContainer: {
@@ -236,6 +236,7 @@ const styles = StyleSheet.create({
   },
   browseContainer: {
     marginTop: 20,
+    marginBottom: 20,
   },
   browseRow: {
     alignItems: "center",
